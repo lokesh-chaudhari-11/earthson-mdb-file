@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthson - Spectro Monitoring System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_main_page.css') }}">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="main-heading">Spectro Monitoring System</h1>
+        <h2 class="company-name">Guardian Castings Pvt.Ltd.</h2>
+
+        <!-- <div class="logo-container"> -->
+        <!-- <img src="{{ url_for('static', filename='image.png') }}" alt="Company Logo"> -->
+        <!-- <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo"> -->
+        <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJoAAACUCAMAAABcK8BVAAAAnFBMVEX///8AAAAREiTDxMX..." alt="Temporary Logo" style="width: 100px; height: auto;"> -->
+        <!-- </div> -->
+        <div class="btn-container">
+            <a href="{{ url_for('page1') }}" class="btn btn-custom">30 Ton</a>
+            <a href="{{ url_for('page2') }}" class="btn btn-custom">15 Ton</a>
+        </div>
+        <p class="developed-by">Project Developed By : AVAAPYA CONSULTANCY SERVICES PRIVATE LIMITED</p>
+        <p class="company-address">Deepstambha Palace, Karve Road, Bhagshala Maidan, Vishnunagar, Dombivli West 421202</p>
+
+
+    </div>
+</body>
+
+</html>

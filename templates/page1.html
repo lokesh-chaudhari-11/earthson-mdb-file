@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="info-bar">
+            <div><span class="company-name">Guardian Castings Pvt.Ltd.</span></div>
+            <button id="home-button" class="home-button">🏠 30 Ton</button>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr id="table-header"></tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        loadData("/api/data1");
+        setInterval(() => loadData("/api/data1"), 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+/* General Styles */
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Main Heading */
+.main-heading {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2vw;
+    margin-bottom: 10px;
+    color: cyan;
+}
+
+/* Company Name with Color Change Effect */
+.company-name {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2vw;
+    animation: colorChange 3s infinite alternate;
+}
+
+/* Color Changing Animation */
+@keyframes colorChange {
+    0% { color: cyan; }
+    50% { color: yellow; }
+    100% { color: orange; }
+}
+
+/* Logo */
+/* .logo-container img {
+    max-width: 120px;
+    height: auto;
+    margin: 30px auto;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 0 15px cyan;
+} */
+
+/* Project Developed By */
+.developed-by {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: yellow;
+    margin-bottom: 5px;
+}
+
+/* Address */
+.company-address {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Button Container */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    margin-top: 3vh;
+    flex-wrap: wrap;
+}
+
+/* Interactive Buttons */
+.btn-custom {
+    font-size: clamp(1rem, 1.5vw, 1.8rem);
+    font-weight: bold;
+    padding: 1.2vh 2vw;
+    border-radius: 10px;
+    border: 0.2vw solid cyan;
+    color: cyan;
+    background: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.1vw;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button Hover Effect */
+.btn-custom:hover {
+    color: black;
+    background: cyan;
+    box-shadow: 0 0 1vw cyan;
+    transform: scale(1.1);
+}
+
+/* Button Ripple Effect */
+.btn-custom::before {
+    content: "";
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-out;
+    border-radius: 50%;
+}
+
+.btn-custom:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .main-heading {
+        font-size: clamp(1.8rem, 6vw, 3rem);
+    }
+
+    .company-name {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    /* .logo-container img {
+        max-width: 100px;
+    } */
+
+    .btn-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1vh;
+    }
+
+    .btn-custom {
+        width: 80%;
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* 🖥️ Large Screens (Smart TVs & Desktops) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .main-heading {
+        font-size: 5rem;
+    }
+
+    .company-name {
+        font-size: 4rem;
+    }
+
+    /* .logo-container img {
+        max-width: 150px;
+    } */
+
+    .btn-custom {
+        font-size: 2rem;
+        padding: 1.5vh 3vw;
+    }
+}
+
+/* Need to remove or use this to adjust image for logo optional */
+ /* .logo { 
+    width: 150px;  /* Adjust as needed */
+    /* height: 10px; */
+    /* display: ruby-base; */
+    /* margin: 0 auto; */
+/* }*/ 

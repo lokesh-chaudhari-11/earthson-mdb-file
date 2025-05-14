@@ -1,0 +1,270 @@
+/* Global Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222831;
+    color: #2a2438;
+    /*elements text color elements, avg, s1,s2,s3,4, etc*/
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+
+/* Table Styles */
+
+table {
+    width: 100%;
+    max-width: 95%;
+    margin-top: 0.8vh;/*margin between sample index container and table container*/
+    /* Adjusts margin based on viewport height */
+    border-collapse: separate;
+    border-spacing: 0.2vw;
+    /* Scales spacing dynamically */
+    background-color: transparent;
+    border-radius: 1vw;
+    /* Adjusts rounding effect based on viewport width */
+    /* Rounds the whole table */
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+th,
+td {
+    padding: 0.2vw;
+    /* Adjusts padding dynamically */
+    text-align: center;
+    border: 0.3vw solid black;
+    /* Scales border thickness */
+    border-radius: 1vw;
+    /* Adjusts rounding effect based on viewport width */
+    background-color: white;
+}
+
+thead {
+    background-color: #ffffff;
+    /* affect 0n thead row cell background for - elements, avg, s1,s2,s3,4, etc */
+}
+
+thead th {
+    font-size: 1vw;
+    /* Keep the size large */
+    font-weight: bold;                   /*This is for */
+    text-transform: uppercase;
+    /* Converts text to uppercase */
+    background-color: #8694ac;
+    /* Muted dark grayish-blue */
+    color: white;
+    /* White text for contrast */
+    padding: 1.2vw;
+    border: 0.3vw solid black;
+}
+
+tbody td {
+    font-weight: bold;
+    font-size: 1vw; /* adjust size of cells of c, 0.234 etc*/
+}
+
+
+/* Responsive Styles */
+
+@media (max-width: 1024px) {
+    /* Tablet and Laptops */
+    .container {
+        padding: 15px;
+    }
+    .info-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .info-bar div {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    table {
+        font-size: 14px;
+    }
+    th,
+    td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Devices */
+    .container {
+        padding: 10px;
+    }
+    .info-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+    .info-bar div {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+    table {
+        font-size: 12px;
+    }
+    th,
+    td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Small Mobile Devices */
+    .container {
+        padding: 8px;
+    }
+    .info-bar div {
+        font-size: 10px;
+        margin-bottom: 6px;
+    }
+    table {
+        font-size: 12px;
+    }
+    th,
+    td {
+        padding: 6px;
+    }
+}
+
+
+/* Table Cells- For table lines */
+
+td {
+    padding: 0.4rem;
+    text-align: center;
+    border: 3px solid rgb(12, 8, 8);
+    /*For table lines */
+    color: rgb(12, 8, 8);
+    /*to change color of elements like c,m,au*/
+    word-wrap: break-word;
+}
+
+
+/*New CSS for bolding text in tables C, 12, 02, min to max etc */
+
+td {
+    font-weight: 1000;
+    font-size: 2.0vw;
+   
+}
+
+/* new home button */
+.info-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    background-color:black;
+    /*background color of sampindex, date, time */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-bar div {
+    flex: 1;
+    color: black;
+    /* text color of sampindex, date, time*/
+    text-align: center;
+    font-weight: 1000;
+    font-size: 1 vw;
+
+    /* font-size: 1vw;
+    font-weight: bold;
+    color: #333; */
+}
+.info-bar span {
+    font-weight: bold;
+}
+
+
+.home-button {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 22px;
+    font-weight: 1000;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 18px;
+}
+
+.home-button:hover {
+    background: linear-gradient(to right, #feb47b, #ff7e5f);
+    transform: scale(1.1);
+}
+
+.home-button:active {
+    transform: scale(0.95);
+}
+
+/* Animation for company name with bold, slide-in, and color-changing text */
+.company-name {
+    display: inline-block;
+    font-weight: 1000;
+    font-size: 3.0vw;
+
+    background: linear-gradient(
+    to right,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #8f00ff
+);
+
+    background-size: 300% 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    animation: slideColor 6s linear infinite, fadeInSlide 1.5s ease-out forwards;
+    opacity: 0;
+
+    /* Tricks to widen the text without resizing span */
+    letter-spacing: 2px;
+    transform: translateX(-20px) scaleX(1.3);
+    transform-origin: left;
+}
+
+
+@keyframes fadeInSlide {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideColor {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
