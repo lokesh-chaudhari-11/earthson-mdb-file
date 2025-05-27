@@ -40,7 +40,8 @@ def read_mdb_data(conn):
     return df_QRData, df_QRList
 
 def get_latest_sampleindex(df, pattern):
-    df_filtered = df[df["SampIndex"].str.match(pattern, case=False, na=False)]
+    # df_filtered = df[df["SampIndex"].str.match(pattern, case=False, na=False)]
+    df_filtered = df[df["new_sample_index"].str.startswith(pattern)]
     if df_filtered.empty:
         return None, None, None, None
     latest_date = df_filtered["AnaDate"].max()
@@ -96,12 +97,12 @@ def main():
             df_QRData, df_QRList = read_mdb_data(conn)
             
             # Generate dynamic patterns based on the month
-            k_pattern = rf"^\(?{LETTER}[-\s]?\d+.*"
-            srk_pattern = rf"^\(?SR\s?{LETTER}[-\s]?\d+.*"
-            
+            # k_pattern = rf"^\(?{LETTER}[-\s]?\d+.*"
+            # srk_pattern = rf"^\(?SR\s?{LETTER}[-\s]?\d+.*"
+            k_pattern = LETTER
+            srk_pattern = f"SR{LETTER}"
             latest_k_date, latest_k_time, latest_K_sampleindex, k_str_to_filter = get_latest_sampleindex(df_QRList, k_pattern)
             latest_srk_date, latest_srk_time, latest_SRK_sampleindex, srk_str_to_filter = get_latest_sampleindex(df_QRList, srk_pattern)
-
 
             if latest_K_sampleindex and latest_K_sampleindex != prev_k_index:
                 df_k_final = df_QRList[df_QRList["new_sample_index"].str.startswith(k_str_to_filter)].merge(df_QRData, on="SeqNo", how="inner")
@@ -141,6 +142,7 @@ def main():
                         prev_srk_index = latest_SRK_sampleindex
 
             time.sleep(1)
+            
         except:
             pass
             
