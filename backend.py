@@ -104,42 +104,42 @@ def main():
             latest_k_date, latest_k_time, latest_K_sampleindex, k_str_to_filter = get_latest_sampleindex(df_QRList, k_pattern)
             latest_srk_date, latest_srk_time, latest_SRK_sampleindex, srk_str_to_filter = get_latest_sampleindex(df_QRList, srk_pattern)
 
-            if latest_K_sampleindex and latest_K_sampleindex != prev_k_index:
-                df_k_final = df_QRList[df_QRList["new_sample_index"].str.startswith(k_str_to_filter)].merge(df_QRData, on="SeqNo", how="inner")
-                df_k_pivot = pivot_content_data(df_k_final)
-                df_k_pivot["element"] = df_k_pivot["element"].str.strip()
-                final_k_df = df_k_pivot.merge(required_df, on="element", how="left")
-                final_k_df["element"] = pd.Categorical(final_k_df["element"], categories=required_data["element"], ordered=True)
-                final_k_df = final_k_df.sort_values("element").reset_index(drop=True)
-                if not final_k_df.empty:   
-                    for s in range(5):
-                        try:
-                            final_k_df.to_csv("k_output.csv", index=False, mode="w")
-                            k_falg = True
-                            break
-                        except:
-                            continue
-                    if k_falg:
-                        prev_k_index = latest_K_sampleindex
+            # if latest_K_sampleindex and latest_K_sampleindex != prev_k_index:
+            df_k_final = df_QRList[df_QRList["new_sample_index"].str.startswith(k_str_to_filter)].merge(df_QRData, on="SeqNo", how="inner")
+            df_k_pivot = pivot_content_data(df_k_final)
+            df_k_pivot["element"] = df_k_pivot["element"].str.strip()
+            final_k_df = df_k_pivot.merge(required_df, on="element", how="left")
+            final_k_df["element"] = pd.Categorical(final_k_df["element"], categories=required_data["element"], ordered=True)
+            final_k_df = final_k_df.sort_values("element").reset_index(drop=True)
+            if not final_k_df.empty:   
+                for s in range(5):
+                    try:
+                        final_k_df.to_csv("k_output.csv", index=False, mode="w")
+                        k_falg = True
+                        break
+                    except:
+                        continue
+                if k_falg:
+                    prev_k_index = latest_K_sampleindex
 
-            if latest_SRK_sampleindex and latest_SRK_sampleindex != prev_srk_index:
-                #df_srk_final = df_QRList[df_QRList["new_sample_index"].str.startswith(srk_str_to_filter)].drop("new_sample_index",axis=1).merge(df_QRData, on="SeqNo", how="inner")
-                df_srk_final = df_QRList[df_QRList["new_sample_index"].str.startswith(srk_str_to_filter)].drop("new_sample_index", axis=1).merge(df_QRData, on="SeqNo", how="inner")
-                df_srk_pivot = pivot_content_data(df_srk_final)
-                df_srk_pivot["element"] = df_srk_pivot["element"].str.strip()
-                final_srk_df = df_srk_pivot.merge(required_df, on="element", how="left")
-                final_srk_df["element"] = pd.Categorical(final_srk_df["element"], categories=required_data["element"], ordered=True)
-                final_srk_df = final_srk_df.sort_values("element").reset_index(drop=True)
-                if not final_srk_df.empty:   
-                    for n in range(5):
-                        try:
-                            final_srk_df.to_csv("srk_output.csv", index=False, mode="w")
-                            srk_flag = True
-                            break
-                        except:
-                            continue
-                    if srk_flag:
-                        prev_srk_index = latest_SRK_sampleindex
+        # if latest_SRK_sampleindex and latest_SRK_sampleindex != prev_srk_index:
+            #df_srk_final = df_QRList[df_QRList["new_sample_index"].str.startswith(srk_str_to_filter)].drop("new_sample_index",axis=1).merge(df_QRData, on="SeqNo", how="inner")
+            df_srk_final = df_QRList[df_QRList["new_sample_index"].str.startswith(srk_str_to_filter)].drop("new_sample_index", axis=1).merge(df_QRData, on="SeqNo", how="inner")
+            df_srk_pivot = pivot_content_data(df_srk_final)
+            df_srk_pivot["element"] = df_srk_pivot["element"].str.strip()
+            final_srk_df = df_srk_pivot.merge(required_df, on="element", how="left")
+            final_srk_df["element"] = pd.Categorical(final_srk_df["element"], categories=required_data["element"], ordered=True)
+            final_srk_df = final_srk_df.sort_values("element").reset_index(drop=True)
+            if not final_srk_df.empty:   
+                for n in range(5):
+                    try:
+                        final_srk_df.to_csv("srk_output.csv", index=False, mode="w")
+                        srk_flag = True
+                        break
+                    except:
+                        continue
+                if srk_flag:
+                    prev_srk_index = latest_SRK_sampleindex
 
             time.sleep(1)
             
